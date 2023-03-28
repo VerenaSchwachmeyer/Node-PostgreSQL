@@ -133,3 +133,18 @@ router.delete("/order/:id", async (req, res) => {
     res.sendStatus(404);
   }
 });
+
+//EXTRA: create a user route taht will return all the orders of a user
+router.get("user/:id/orders", async (req, res) => {
+  console.log("test hello");
+  const { id } = req.params;
+  //   try {
+  //     const { rows } = await pool.query(
+  //       "SELECT * FROM orders WHERE user_id=$1;",
+  //       [id]
+  //     );
+  //     res.json({ data: rows });
+  //   } catch (err) {
+  //     res.sendStatus(404);
+  //   }
+});
