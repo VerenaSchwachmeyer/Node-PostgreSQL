@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const pool = require("./db");
-
+const { body, validationResult } = require("express-validator");
 const router = Router();
 
 router.get("/user", async (req, res) => {
@@ -78,6 +78,14 @@ router.get("/user/:id/orders", async (req, res) => {
   } catch (err) {
     res.sendStatus(404);
   }
+});
+
+//EXTRA: Validate all the data coming from the users/orders for the Post/Put routes
+router.post("/usertest", (req, res) => {
+  User.create({
+    username: req.body.username,
+    password: req.body.password,
+  }).then((user) => res.json(user));
 });
 
 module.exports = router;

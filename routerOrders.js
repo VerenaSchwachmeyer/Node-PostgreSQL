@@ -14,7 +14,7 @@ routerOrders.get("/order", async (req, res) => {
 });
 
 //get order with id
-router.get("/order/:id", async (req, res) => {
+routerOrders.get("/order/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const { rows } = await pool.query("SELECT * FROM orders WHERE id=$1;", [
@@ -28,7 +28,7 @@ router.get("/order/:id", async (req, res) => {
 });
 
 //create a new order
-router.post("/order/", async (req, res) => {
+routerOrders.post("/order/", async (req, res) => {
   const { price, date, user_id } = req.body;
   try {
     const { rows } = await pool.query(
@@ -43,7 +43,7 @@ router.post("/order/", async (req, res) => {
 });
 
 //to edit one orfer with the id
-router.put("/order/:id", async (req, res) => {
+routerOrders.put("/order/:id", async (req, res) => {
   const { id } = req.params;
   const { price } = req.body;
   try {
@@ -58,7 +58,7 @@ router.put("/order/:id", async (req, res) => {
 });
 
 // delete an order with an id
-router.delete("/order/:id", async (req, res) => {
+routerOrders.delete("/order/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const { rows } = await pool.query("DELETE FROM orders WHERE id=$1", [id]);
