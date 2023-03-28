@@ -1,10 +1,6 @@
-const express = require("express");
-const app = express();
+const app = require("./server");
 const port = 8000;
-
-app.get("/", (req, res) => {
-  res.send("Hello World! This is a test.");
-});
+require("dotenv").config();
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
